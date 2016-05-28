@@ -24,11 +24,11 @@ The requests you will have to send to the server will depend on the mode you are
 In training mode, you can play against some dummy bots, you can specify the number of turns you want to play and, if you want, you can provide a specific map to test your algorithms. The games played in Training mode are not scored, so feel free to use it as much as you want.
 
 In training mode, the url you will need to use is:
-`http://dis-ia.dinf.fsci.usherbrooke.ca:80/api/training`
+`http://dinf-jdis-ia.dinf.fsci.usherbrooke.ca:80/api/training`
 
 Here are the steps you need to follow to play in training mode
 
-1. Send a POST HTTP request to the http://dis-ia.dinf.fsci.usherbrooke.ca:80/api/training URL to get the initial game state. Here are the parameters you can pass in the POST body:
+1. Send a POST HTTP request to the http://dinf-jdis-ia.dinf.fsci.usherbrooke.ca:80/api/training URL to get the initial game state. Here are the parameters you can pass in the POST body:
   * key (required)
     * The secret key you were given
   * turns
