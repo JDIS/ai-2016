@@ -2,6 +2,9 @@ package com.coveo.blitz.client.bot;
 
 import java.util.concurrent.Callable;
 
+import java.awt.Desktop;
+import java.net.URI;
+
 import org.apache.http.conn.params.ConnManagerPNames;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
@@ -70,7 +73,9 @@ public class SimpleBotRunner implements Callable<GameState>
             response = request.execute();
             gameState = response.parseAs(GameState.class);
             logger.info("Game URL: {}", gameState.getViewUrl());
-
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().browse(new URI(gameState.getViewUrl()));
+            }
             // Game loop
             while (!gameState.getGame().isFinished() && !gameState.getHero().isCrashed()) {
                 logger.info("Taking turn " + gameState.getGame().getTurn());
