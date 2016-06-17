@@ -1,0 +1,45 @@
+@(replays: List[Replay], topUsers: List[User])
+
+
+@main("AI contest") {
+
+<h2>TV</h2>
+<div id="gametv">Nothing at the moment.</div>
+
+<img class="logo" style="margin:20px" src="./assets/img/logo.png" alt="JDIs" height="140">
+<img class="logo" style="margin:20px" src="./assets/img/wk-coveo.png" alt="JDIs" height="140">
+
+<div class="row">
+
+    <div class="col-md-6">
+        <section id="recent-games">
+            <h2>Recent games</h2>
+            <ul>
+                @replays.map { replay =>
+                <li>
+                <a href="@routes.Game.show(replay.id)@if(!replay.finished){?speed=max}">
+                    @replay.names.mkString(" vs "),
+                    @if(replay.finished) { Finished } else { In progress }
+                </a>
+                </li>
+                }
+            </ul>
+        </section>
+    </div>
+
+    <div class="col-md-6">
+        <section id="top-users">
+            <h2>Teams</h2>
+            <ul>
+                @topUsers.map { user =>
+                <li>
+                <a href="@routes.User.show(user.id)">
+                    @user.name
+                </a>
+                </li>
+                }
+            </ul>
+        </section>
+    </div>
+</div>
+}

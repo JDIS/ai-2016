@@ -1,0 +1,19 @@
+@(replay: Replay, reloadIn: Option[Int] = None)
+
+@import play.api.libs.json.Json
+
+@main("Game " + replay.id) {
+
+<img class="logo" style="margin:20px" src="./assets/img/logo.png" alt="JDIs" height="140">
+<img class="logo" style="margin:20px" src="./assets/img/wk-coveo.png" alt="JDIs" height="140">
+
+<div id="game"></div>
+
+
+<script>
+  var GAME_ID = "@replay.id";
+  @reloadIn.map { delay =>
+    setTimeout(function() { location.href = "@routes.Game.map(delay)"; }, @delay * 1000);
+  }
+</script>
+}
